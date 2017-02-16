@@ -1,4 +1,4 @@
-require "pipedrive_api/version"
+require 'pipedrive_api/version'
 require 'pipedrive_api/base'
 require 'pipedrive_api/person'
 require 'pipedrive_api/deal'

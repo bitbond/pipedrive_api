@@ -22,7 +22,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Authenticate your Pipedrive API session
+PipedriveAPI::Base.auth(api_token: YOUR_API_TOKEN, account_name: YOUR_PIPEDRIVE_ACCOUNT_NAME)
+
+# Find all records of a resource
+PipedriveAPI::Person.all(<params>)
+
+# Find a resource by ID
+PipedriveAPI::Person.find(<id>)
+
+# Find a resource by name
+PipedriveAPI::Person.find_by_name(<name>, <params>)
+
+# Create a resource
+PipedriveAPI::Person.create(<params>)
+
+# Update a resource
+PipedriveAPI::Person.update(<id>, <params>)
+```
 
 ## Development
 
@@ -38,4 +56,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

@@ -1,6 +1,6 @@
 # PipedriveAPI
 
-A simple wrapper for the [Pipedrive API](https://developers.pipedrive.com/docs/api/v1/).
+A simple ruby wrapper for the [Pipedrive API](https://developers.pipedrive.com/docs/api/v1/).
 
 ## Installation
 
@@ -26,18 +26,32 @@ PipedriveAPI::Base.auth(api_token: YOUR_API_TOKEN, account_name: YOUR_PIPEDRIVE_
 
 # Find all records of a resource
 PipedriveAPI::Person.all(<params>)
+PipedriveAPI::Organisation.all(<params>)
+PipedriveAPI::Pipeline.all(<params>)
+PipedriveAPI::Product.all(<params>)
 
 # Find a resource by ID
 PipedriveAPI::Person.find(<id>)
+PipedriveAPI::Organisation.find(<id>)
+PipedriveAPI::Pipeline.find(<id>)
+PipedriveAPI::Product.find(<id>)
 
 # Find a resource by name
 PipedriveAPI::Person.find_by_name(<name>, <params>)
+PipedriveAPI::Organisation.find_by_name(<name>, <params>)
+PipedriveAPI::Product.find_by_name(<name>, <params>)
 
 # Create a resource
 PipedriveAPI::Person.create(<params>)
+PipedriveAPI::Organisation.create(<params>)
+PipedriveAPI::Pipeline.create(<params>)
+PipedriveAPI::Product.create(<params>)
 
 # Update a resource
 PipedriveAPI::Person.update(<id>, <params>)
+PipedriveAPI::Organisation.update(<id>, <params>)
+PipedriveAPI::Pipeline.update(<id>, <params>)
+PipedriveAPI::Product.update(<id>, <params>)
 ```
 
 ## Development

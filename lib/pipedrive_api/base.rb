@@ -12,29 +12,34 @@ module PipedriveAPI
     class << self
 
       def auth(api_token:, account_name: "api")
-        base_uri "https://#{account_name}.pipedrive.com/#{API_VERSION}/"
         default_params api_token: api_token
+        base_uri "https://#{account_name}.pipedrive.com/#{API_VERSION}/"
       end
 
       def all(**params)
         # TODO pagination
         response = get "#{resource_path}", query: params
+        response.success? ? response['data'] : bad_response(response, params)
       end
 
       def find(id)
         response = get "#{resource_path}/#{id}"
+        response.success? ? response['data'] : bad_response(response, id)
       end
 
       def find_by_name(name, **params)
         response = get "#{resource_path}/find", query: { term: name }.merge(params)
+        response.success? ? response['data'] : bad_response(response, name)
       end
 
       def create(**params)
         response = post resource_path, body: params.to_json
+        response.success? ? response['data'] : bad_response(response, params)
       end
 
       def update(id, **params)
         response = put "#{resource_path}/#{id}", body: params.to_json
+        response.success? ? response['data'] : bad_response(response, id)
       end
 
       def resource_path
@@ -43,6 +48,15 @@ module PipedriveAPI
         klass = name.split('::').last
         klass[0] = klass[0].chr.downcase
         klass.end_with?('y') ? "/#{klass.chop}ies" : "/#{klass}s"
+      end
+
+      def bad_response(response, params)
+        puts params
+        puts response.parsed_response['error']
+        if response.class == HTTParty::Response
+          raise HTTParty::ResponseError, response
+        end
+        raise StandardError, 'Unknown error'
       end
 
     end

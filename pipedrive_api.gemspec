@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "pipedrive_api"
   spec.version       = PipedriveApi::VERSION
   spec.authors       = ["gareth"]
-  spec.email         = ["hello@garethfuller.me"]
+  spec.email         = ["gareth@bitbond.com"]
 
   spec.summary       = %q{A wrapper for the Pipedrive API.}
   spec.description   = %q{A wrapper for the Pipedrive API.}
-  spec.homepage      = "https://github.com/garethfuller/pipedrive_api"
+  spec.homepage      = "https://github.com/bitbond/pipedrive_api"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

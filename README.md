@@ -41,6 +41,9 @@ PipedriveAPI::Person.find_by_name(<name>, <params>)
 PipedriveAPI::Organisation.find_by_name(<name>, <params>)
 PipedriveAPI::Product.find_by_name(<name>, <params>)
 
+# Find a Person by email
+PipedriveAPI::Person.find_by_email(<email>, <params>)
+
 # Create a resource
 PipedriveAPI::Person.create(<params>)
 PipedriveAPI::Organisation.create(<params>)

@@ -19,27 +19,27 @@ module PipedriveAPI
       def all(**params)
         # TODO pagination
         response = get "#{resource_path}", query: params
-        response.success? ? response['data'] : bad_response(response, params)
+        handle response
       end
 
       def find(id)
         response = get "#{resource_path}/#{id}"
-        response.success? ? response['data'] : bad_response(response, id)
+        handle response
       end
 
       def find_by_name(name, **params)
         response = get "#{resource_path}/find", query: { term: name }.merge(params)
-        response.success? ? response['data'] : bad_response(response, name)
+        handle response
       end
 
       def create(**params)
         response = post resource_path, body: params.to_json
-        response.success? ? response['data'] : bad_response(response, params)
+        handle response
       end
 
       def update(id, **params)
         response = put "#{resource_path}/#{id}", body: params.to_json
-        response.success? ? response['data'] : bad_response(response, id)
+        handle response
       end
 
       def resource_path
@@ -50,13 +50,17 @@ module PipedriveAPI
         klass.end_with?('y') ? "/#{klass.chop}ies" : "/#{klass}s"
       end
 
-      def bad_response(response, params)
-        puts params
-        puts response.parsed_response['error']
-        if response.class == HTTParty::Response
-          raise HTTParty::ResponseError, response
+      def handle response
+        case response.code
+        when 200
+          response['data']
+        when 404
+          raise HTTParty::Error, response.parsed_response['error']
+        when 500..600
+          raise HTTParty::Error, response.parsed_response['error']
+        else
+          raise StandardError, 'Unknown error'
         end
-        raise StandardError, 'Unknown error'
       end
 
     end

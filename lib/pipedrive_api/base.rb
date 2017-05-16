@@ -42,7 +42,7 @@ module PipedriveAPI
         handle response
       end
       
-      def delete(id)
+      def remove(id)
         response = delete "#{resource_path}/#{id}"
         handle response
       end

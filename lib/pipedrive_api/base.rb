@@ -59,7 +59,7 @@ module PipedriveAPI
         case response.code
         when 200..299
           response['data']
-        when 404
+        when 403..404
           raise HTTParty::Error, response.parsed_response['error']
         when 500..600
           raise HTTParty::Error, response.parsed_response['error']

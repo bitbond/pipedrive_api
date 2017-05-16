@@ -1,5 +1,5 @@
 module PipedriveAPI
-  class Organisation < Base
+  class Organization < Base
 
     class << self
 

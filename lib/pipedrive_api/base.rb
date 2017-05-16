@@ -41,6 +41,11 @@ module PipedriveAPI
         response = put "#{resource_path}/#{id}", body: params.to_json
         handle response
       end
+      
+      def delete(id, **params)
+        response = delete "#{resource_path}/#{id}"
+        handle response
+      end
 
       def resource_path
         # The resource path should match the camelCased class name with the

@@ -55,6 +55,9 @@ PipedriveAPI::Person.update(<id>, <params>)
 PipedriveAPI::Organisation.update(<id>, <params>)
 PipedriveAPI::Pipeline.update(<id>, <params>)
 PipedriveAPI::Product.update(<id>, <params>)
+
+# Find record by field term
+PipedriveAPI::SearchResult.by_field(<term>, <field_type>, <field_key>, <exact_match>, <params>)
 ```
 
 ## Development

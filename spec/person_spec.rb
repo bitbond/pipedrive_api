@@ -34,19 +34,19 @@ describe PipedriveAPI::Person do
     end
 
     it "finds all persons" do
-      expect(PipedriveAPI::Person.all.parsed_response.to_json).to eq(@all_response)
+      expect(PipedriveAPI::Person.all.to_json).to eq(JSON.parse(@all_response)["data"].to_json)
     end
 
     it "finds a person" do
-      expect(PipedriveAPI::Person.find(5).parsed_response.to_json).to eq(@find_response)
+      expect(PipedriveAPI::Person.find(5).to_json).to eq(JSON.parse(@find_response)["data"].to_json)
     end
 
     it "creates a person" do
-      expect(PipedriveAPI::Person.create(@params).parsed_response.to_json).to eq(@create_response)
+      expect(PipedriveAPI::Person.create(@params).to_json).to eq(JSON.parse(@create_response)["data"].to_json)
     end
 
     it "updates a person" do
-      expect(PipedriveAPI::Person.update(5, @update_params).parsed_response.to_json).to eq(@update_response)
+      expect(PipedriveAPI::Person.update(5, @update_params).to_json).to eq(JSON.parse(@update_response)["data"].to_json)
     end
 
   end

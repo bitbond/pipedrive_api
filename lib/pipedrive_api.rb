@@ -9,6 +9,7 @@ require 'pipedrive_api/person_field'
 require 'pipedrive_api/note'
 require 'pipedrive_api/stage'
 require 'pipedrive_api/search_result'
+require 'pipedrive_api/activity'
 
 
 module PipedriveAPI

@@ -1,9 +1,9 @@
 module PipedriveAPI
-  class Deal < Base
+  class DealField < Base
 
     class << self
 
     end
-    
+
   end
 end

@@ -3,7 +3,10 @@ module PipedriveAPI
 
     class << self
 
-
+      def deals(id, **params)
+        response = get "#{resource_path}/#{id}/deals", query: params
+        handle response
+      end
 
     end
 
